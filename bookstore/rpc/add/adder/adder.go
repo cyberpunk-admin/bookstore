@@ -6,7 +6,7 @@ package adder
 import (
 	"context"
 
-	"add/pb/add"
+	"bookstore/rpc/add/pb/add"
 
 	"github.com/zeromicro/go-zero/zrpc"
 	"google.golang.org/grpc"

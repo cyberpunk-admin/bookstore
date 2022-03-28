@@ -3,8 +3,9 @@ package logic
 import (
 	"context"
 
-	"bookstore/internal/svc"
-	"bookstore/internal/types"
+	"bookstore/api/internal/svc"
+	"bookstore/api/internal/types"
+	"bookstore/rpc/add/adder"
 
 	"github.com/zeromicro/go-zero/core/logx"
 )
@@ -23,8 +24,16 @@ func NewAddLogic(ctx context.Context, svcCtx *svc.ServiceContext) *AddLogic {
 	}
 }
 
-func (l *AddLogic) Add(req *types.AddReq) (resp *types.AddResp, err error) {
-	// todo: add your logic here and delete this line
+func (l *AddLogic) Add(req *types.AddReq) (*types.AddResp, error) {
+	resp, err := l.svcCtx.Adder.Add(l.ctx, &adder.AddReq{
+		Book:  req.Book,
+		Price: req.Price,
+	})
+	if err != nil {
+		return nil, err
+	}
 
-	return
+	return &types.AddResp{
+		Ok: resp.Ok,
+	}, nil
 }
