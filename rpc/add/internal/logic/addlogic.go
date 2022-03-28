@@ -1,7 +1,7 @@
 package logic
 
 import (
-	"bookstore/model"
+	"bookstore/rpc/model"
 	"context"
 
 	"bookstore/rpc/add/internal/svc"
