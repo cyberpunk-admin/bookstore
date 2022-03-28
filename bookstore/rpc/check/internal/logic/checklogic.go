@@ -24,7 +24,7 @@ func NewCheckLogic(ctx context.Context, svcCtx *svc.ServiceContext) *CheckLogic 
 }
 
 func (l *CheckLogic) Check(in *check.CheckReq) (*check.CheckResp, error) {
-	resp, err := l.svcCtx.Model.FindOne(in.Book)
+	resp, err := l.svcCtx.Model.FindOne(l.ctx, in.Book)
 	if err != nil {
 		return nil, err
 	}

@@ -4,10 +4,10 @@ import (
 	"flag"
 	"fmt"
 
-	"check/internal/config"
-	"check/internal/server"
-	"check/internal/svc"
-	"check/pb/check"
+	"bookstore/rpc/check/internal/config"
+	"bookstore/rpc/check/internal/server"
+	"bookstore/rpc/check/internal/svc"
+	"bookstore/rpc/check/pb/check"
 
 	"github.com/zeromicro/go-zero/core/conf"
 	"github.com/zeromicro/go-zero/core/service"

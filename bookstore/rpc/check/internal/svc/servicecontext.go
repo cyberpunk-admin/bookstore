@@ -1,22 +1,19 @@
 package svc
 
 import (
-	"bookstore/rpc/add/adder"
-	"bookstore/rpc/check/checker"
+	"bookstore/model"
 	"bookstore/rpc/check/internal/config"
-	"github.com/zeromicro/go-zero/zrpc"
+	"github.com/zeromicro/go-zero/core/stores/sqlx"
 )
 
 type ServiceContext struct {
-	Config  config.Config
-	Adder   adder.Adder
-	Checker checker.Checker
+	Config config.Config
+	Model  model.BookModel
 }
 
 func NewServiceContext(c config.Config) *ServiceContext {
 	return &ServiceContext{
-		Config:  c,
-		Adder:   adder.NewAdder(zrpc.MustNewClient(c.Add)),
-		Checker: checker.NewChecker(zrpc.MustNewClient(c.Check)),
+		Config: c,
+		Model:  model.NewBookModel(sqlx.NewMysql(c.DataSource), c.Cache),
 	}
 }
