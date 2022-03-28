@@ -7,4 +7,4 @@ Etcd:
 DataSource: root:password@tcp(localhost:3306)/gozero
 Table: book
 Cache:
-  - Host: localhost:6379
+  - Host: localhost:6379q
