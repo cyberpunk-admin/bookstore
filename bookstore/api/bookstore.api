@@ -2,24 +2,38 @@
 syntax = "v1"
 
 info (
-	title: // TODO: add title
-	desc: // TODO: add description
-	author: "xucheng liu"
-	email: "xucheng.liu@dolphindb.com"
+	title: bookstore_api
+	desc: bookstore_api
+	author: "cyberpunk-admin"
+	email: "cyberpunk-admin@github.com"
 )
 
-type request {
-	// TODO: add members here and delete this comment
-}
+type (
+  	addReq {
+  		book string `form:"book"`
+  		price int64 `form:"price"`
+  	}
 
-type response {
-	// TODO: add members here and delete this comment
-}
+  	addResp {
+  		ok bool `json:"ok"`
+  	}
+  )
 
-service bookstore-api {
-	@handler GetUser // TODO: set handler name and delete this comment
-	get /users/id/:userId(request) returns(response)
+  type (
+  	checkReq {
+  		book string `form:"book"`
+  	}
 
-	@handler CreateUser // TODO: set handler name and delete this comment
-	post /users/create(request)
-}
+  	checkResp {
+  		found bool `json:"found"`
+  		price int64 `json:"price"`
+  	}
+  )
+
+  service bookstore-api {
+  	@handler AddHandler
+  	get /add (addReq) returns (addResp)
+
+  	@handler CheckHandler
+  	get /check (checkReq) returns (checkResp)
+  }
