@@ -1,4 +1,3 @@
-
 syntax = "v1"
 
 info (
@@ -9,31 +8,31 @@ info (
 )
 
 type (
-  	addReq {
-  		book string `form:"book"`
-  		price int64 `form:"price"`
-  	}
+	addReq {
+		Book  string `form:"book"`
+		Price int64  `form:"price"`
+	}
 
-  	addResp {
-  		ok bool `json:"ok"`
-  	}
-  )
+	addResp {
+		Ok bool `json:"ok"`
+	}
+)
 
-  type (
-  	checkReq {
-  		book string `form:"book"`
-  	}
+type (
+	checkReq {
+		Book string `form:"book"`
+	}
 
-  	checkResp {
-  		found bool `json:"found"`
-  		price int64 `json:"price"`
-  	}
-  )
+	checkResp {
+		Found bool  `json:"found"`
+		Price int64 `json:"price"`
+	}
+)
 
-  service bookstore-api {
-  	@handler AddHandler
-  	get /add (addReq) returns (addResp)
-
-  	@handler CheckHandler
-  	get /check (checkReq) returns (checkResp)
-  }
+service bookstore-api {
+	@handler AddHandler
+	get /add (addReq) returns (addResp)
+	
+	@handler CheckHandler
+	get /check (checkReq) returns (checkResp)
+}
